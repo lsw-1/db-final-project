@@ -13,6 +13,9 @@ public abstract class BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private final Long id;
 
+    @Version
+    private Long version;
+
     protected BaseEntity() {
         id = null;
     }

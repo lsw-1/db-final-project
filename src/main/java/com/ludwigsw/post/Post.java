@@ -2,9 +2,12 @@ package com.ludwigsw.post;
 
 import com.ludwigsw.comment.Comment;
 import com.ludwigsw.core.BaseEntity;
+import com.ludwigsw.user.User;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,11 +16,18 @@ import java.util.List;
  */
 @Entity
 public class Post extends BaseEntity {
+    @NotNull
+    @Size(min = 2, max = 30)
     private String title;
+    @NotNull
+    @Size(min = 5, max = 500)
     private String content;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comment> comments;
+
+    @ManyToOne
+    private User user;
 
     protected Post() {
         super();
@@ -28,6 +38,14 @@ public class Post extends BaseEntity {
         this();
         this.title = title;
         this.content = content;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<Comment> getComments() {
