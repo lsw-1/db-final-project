@@ -1,6 +1,6 @@
 package com.ludwigsw.core;
 
-import com.ludwigsw.user.DetalisService;
+import com.ludwigsw.user.DetailsService;
 import com.ludwigsw.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     @Lazy
-    DetalisService userDetalisService;
+    DetailsService userDetalisService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

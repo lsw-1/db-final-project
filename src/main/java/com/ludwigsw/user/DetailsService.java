@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * Created by Ludwig on 10/14/2016.
  */
 @Component
-public class DetalisService implements UserDetailsService {
+public class DetailsService implements UserDetailsService {
 
     @Autowired
     UserRepository users;

@@ -1,13 +1,14 @@
 package com.ludwigsw.comment;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 /**
  * Created by Ludwig on 10/13/2016.
  */
-public interface CommentRepository extends CrudRepository<Comment, Long> {
+public interface CommentRepository extends PagingAndSortingRepository<Comment, Long> {
 
     @Override
     @PreAuthorize("hasRole('ROLE_ADMIN') or @commentRepository.findOne(#id)?.user?.username == authentication.name")
