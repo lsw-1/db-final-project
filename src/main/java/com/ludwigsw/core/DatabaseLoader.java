@@ -67,7 +67,7 @@ public class DatabaseLoader implements ApplicationRunner {
         users.save(new User("luda", "Wiren", "Ludwig", "13245", new String[]{"ROLE_USER", "ROLE_ADMIN"}));
 
         List<Post> mockPosts = new ArrayList<>();
-        IntStream.range(0, 100)
+        IntStream.range(0, 25)
                 .forEach(i -> {
                     String template = templates[i % templates.length];
                     String insert = inserts[i % inserts.length];

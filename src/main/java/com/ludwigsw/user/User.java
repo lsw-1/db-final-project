@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ludwigsw.comment.Comment;
 import com.ludwigsw.core.BaseEntity;
 import com.ludwigsw.post.Post;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+/*import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;*/
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -18,7 +18,7 @@ import java.util.List;
  */
 @Entity
 public class User extends BaseEntity {
-    public static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
+//    public static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
 
     private String firstName;
     private String lastName;
@@ -37,13 +37,13 @@ public class User extends BaseEntity {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
-        setPassword(password);
+//        setPassword(password);
         this.roles = roles;
     }
 
-    public void setPassword(String password) {
+/*    public void setPassword(String password) {
         this.password = PASSWORD_ENCODER.encode(password);
-    }
+    }*/
 
     public String getPassword() {
         return password;

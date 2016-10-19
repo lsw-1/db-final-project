@@ -1,3 +1,4 @@
+/*
 package com.ludwigsw.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,9 +8,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+*/
 /**
  * Created by Ludwig on 10/14/2016.
- */
+ *//*
+
 @Component
 public class DetailsService implements UserDetailsService {
 
@@ -30,3 +33,4 @@ public class DetailsService implements UserDetailsService {
 
     }
 }
+*/

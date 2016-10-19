@@ -1,3 +1,4 @@
+/*
 package com.ludwigsw.comment;
 
 import com.ludwigsw.user.User;
@@ -28,3 +29,4 @@ public class CommentEventHandler {
         comment.setUser(user);
     }
 }
+*/
