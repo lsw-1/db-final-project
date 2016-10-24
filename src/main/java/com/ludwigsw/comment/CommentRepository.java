@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 /**
  * Created by Ludwig on 10/13/2016.
  */
-public interface CommentRepository extends PagingAndSortingRepository<Comment, Long> {
+public interface CommentRepository extends CrudRepository<Comment, Long> {
 
 /*    @Override
     @PreAuthorize("hasRole('ROLE_ADMIN') or @commentRepository.findOne(#id)?.user?.username == authentication.name")

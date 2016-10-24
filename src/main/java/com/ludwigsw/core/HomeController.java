@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * Created by Ludwig on 10/18/2016.
  */
+
+/* Controller to facilitate the SPA(Single page Application) html-template */
 @Controller
 public class HomeController {
 

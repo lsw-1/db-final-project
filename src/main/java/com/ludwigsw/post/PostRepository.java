@@ -13,7 +13,7 @@ import javax.annotation.security.PermitAll;
 /**
  * Created by Ludwig on 10/13/2016.
  */
-public interface PostRepository extends CrudRepository<Post, Long> {
+public interface PostRepository extends PagingAndSortingRepository<Post, Long> {
     @RestResource(rel = "title-contain", path = "containsTitle")
     Page<Post> findByTitleContaining(@Param("title") String title, Pageable page);
 }

@@ -1,48 +1,73 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import ListofPosts from './ListofPosts.jsx'
+import Posts from './Posts.jsx'
 
-const API_URL = '/api/v1/posts';
+const API_URL = '/api/v1/posts/';
 
-class Main extends Component {
+export default class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            posts: []
+            page: 0,
+            posts: [],
+            editMode: false
         };
     }
 
     componentDidMount = () => {
-        axios.get(API_URL).then((response) => {
+        axios.get(API_URL)
+            .then((response) => {
+                const posts = response.data._embedded.posts;
+                this.setState({posts});
+            })
+    };
+
+    nextPage = () => {
+        axios.get(API_URL, {
+            params: {
+                page: this.state.page++,
+                size: 5
+            }
+        }).then(response => {
             const posts = response.data._embedded.posts;
+            if (posts === []){
+                this.state.page--
+            }
             this.setState({posts});
-            console.log(this.state.posts)
         })
     };
 
-    addfields = () => {
-
+    previousPage = () => {
+        if(this.state.page > 0){
+            axios.get(API_URL, {
+                params: {
+                    page: this.state.page--,
+                    size: 5
+                }
+            }).then(response => {
+                const posts = response.data._embedded.posts;
+                this.setState({posts});
+            })
+        }
     };
 
     render = () => {
 
         return <div>
-            <div className="jumbotron bg-warning">
-                <h1 className="display-1">A LA PETE LUDA BLOG</h1>
-                <p>Final project of DB course</p>
-            </div>
-            <div className="input-group col-md-12">
-                <span className="input-group-addon" id="basic-addon2">SEARCH</span>
-                <input type="text" className="form-control" placeholder="NAME OF A POST"
-                       aria-describedby="basic-addon2"/>
-                <button className="btn-warning" onClick={() => this.addfields()}>Add</button>
-            </div>
             <div>
-                <ListofPosts posts={this.state.posts}/>
+                <button className="btn-lg btn-danger" onClick={() => this.deletePost()}>Delete</button>
+            </div>
+            {/**************PAGED POSTS******************/}
+            <div>
+                <Posts posts={this.state.posts}/>
+            </div>
+            {/**************CHANGE PAGE******************/}
+            <div className="btn-group m-t-2">
+                <button className="btn" onClick={() => this.previousPage()}>PREVIOUS PAGE</button>
+                <button className="btn" onClick={() => this.nextPage()}>NEXT PAGE</button>
             </div>
         </div>
 
     }
 }
 
-export default Main;
