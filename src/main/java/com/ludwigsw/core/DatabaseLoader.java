@@ -1,10 +1,10 @@
+/*
 package com.ludwigsw.core;
 
 import com.ludwigsw.comment.Comment;
 import com.ludwigsw.post.Post;
 import com.ludwigsw.post.PostRepository;
-import com.ludwigsw.user.User;
-import com.ludwigsw.user.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -15,19 +15,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
-/**
- * Created by Ludwig on 10/13/2016.
- */
+
 @Component
 public class DatabaseLoader implements ApplicationRunner {
 
-    private final UserRepository users;
     private final PostRepository posts;
 
     @Autowired
-    public DatabaseLoader(PostRepository posts, UserRepository users) {
+    public DatabaseLoader(PostRepository posts) {
         this.posts = posts;
-        this.users = users;
     }
 
 
@@ -49,7 +45,8 @@ public class DatabaseLoader implements ApplicationRunner {
                 "hörru"
         };
 
-        List<User> students = Arrays.asList(
+*/
+/*       List<User> students = Arrays.asList(
                 new User("jacobproffer", "Jacob", "Proffer", "password", new String[]{"ROLE_USER"}),
                 new User("mlnorman", "Mike", "Norman", "password", new String[]{"ROLE_USER"}),
                 new User("k_freemansmith", "Karen", "Freeman-Smith", "password", new String[]{"ROLE_USER"}),
@@ -64,7 +61,9 @@ public class DatabaseLoader implements ApplicationRunner {
                 new User("albertqerimi", "Albert", "Qerimi", "password", new String[]{"ROLE_USER"})
         );
         users.save(students);
-        users.save(new User("luda", "Wiren", "Ludwig", "13245", new String[]{"ROLE_USER", "ROLE_ADMIN"}));
+        users.save(new User("luda", "Wiren", "Ludwig", "13245", new String[]{"ROLE_USER", "ROLE_ADMIN"}));*//*
+
+
 
         List<Post> mockPosts = new ArrayList<>();
         IntStream.range(0, 25)
@@ -74,12 +73,13 @@ public class DatabaseLoader implements ApplicationRunner {
                     String title = String.format(template, insert);
 
                     Post p = new Post(title, title);
-                    p.setUser(students.get(i % students.size()));
+//                    p.setUser(students.get(i % students.size()));
                     Comment comment = new Comment(String.format("what is this %s", insert));
-                    comment.setUser(students.get((i % students.size())));
+//                    comment.setUser(students.get((i % students.size())));
                     p.addComment(comment);
                     mockPosts.add(p);
                 });
         posts.save(mockPosts);
     }
 }
+*/

@@ -2,10 +2,7 @@ package com.ludwigsw.comment;
 
 import com.ludwigsw.core.BaseEntity;
 import com.ludwigsw.post.Post;
-import com.ludwigsw.user.User;
-import org.hibernate.annotations.Type;
 
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
@@ -19,8 +16,7 @@ public class Comment extends BaseEntity{
     private String content;
     @ManyToOne
     private Post post;
-    @ManyToOne
-    private User user;
+
 
     protected Comment() {
         super();
@@ -28,14 +24,6 @@ public class Comment extends BaseEntity{
 
     public Comment(String content) {
         this.content = content;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public Post getPost() {

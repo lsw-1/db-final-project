@@ -4,9 +4,6 @@ package com.ludwigsw.core;
 
 import javax.persistence.*;
 
-/**
- * Created by Ludwig on 10/13/2016.
- */
 @MappedSuperclass
 public abstract class BaseEntity {
     @Id

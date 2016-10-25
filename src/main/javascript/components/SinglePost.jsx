@@ -39,15 +39,18 @@ export default class SinglePost extends Component {
             console.log(response.status))
     };
 
-    onEdit = () => {
+    onComplete = () => {
         let editedPost = {
             title: this.state.title,
             content: this.state.content
         };
+
         axios.put(this.state.api_url, editedPost).then(response =>
             console.log(response.statusText)
         )
     };
+
+
 
     onSave = () => {
         this.setState({
@@ -56,14 +59,6 @@ export default class SinglePost extends Component {
             editing: false
         });
 
-        let editedPost = {
-            title: this.state.title,
-            content: this.state.content
-        };
-
-        axios.put(this.state.api_url, editedPost).then(response =>
-            console.log(response.statusText)
-        )
     };
 
     onChange = () => {
@@ -95,8 +90,9 @@ export default class SinglePost extends Component {
                 <h4>{this.state.title}</h4>
                 <p>{this.state.content}</p>
                 <div className="btn-group">
-                    <button className="btn" onClick={() => this.onDelete()}><Link to="/">Delete</Link></button>
+                    <button className="btn" onClick={() => this.onDelete()}><Link to="deleted">Delete</Link></button>
                     <button className="btn" onClick={() => this.onChange()}>Edit</button>
+                    <button className="btn" onClick={() => this.onComplete()}> <Link to="created"> Completed</Link></button>
                 </div>
             </div>;
 

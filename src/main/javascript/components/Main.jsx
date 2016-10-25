@@ -10,45 +10,70 @@ export default class Main extends Component {
         this.state = {
             page: 0,
             posts: [],
-            editMode: false
+            editMode: false,
+            next: "",
+            previous: "hmmmm"
         };
     }
 
     componentDidMount = () => {
         axios.get(API_URL)
             .then((response) => {
-                const posts = response.data._embedded.posts;
-                this.setState({posts});
+                let posts = response.data._embedded.posts;
+                let next = response.data._links.next.href;
+                let previous;
+                try {
+                    previous = response.data._links.prev.href;
+                } catch (e){
+                    previous = "";
+                    console.log(e.message)
+                }
+                this.setState({
+                    posts,
+                    next: next,
+                    previous: previous
+                });
+
             })
     };
 
     nextPage = () => {
-        axios.get(API_URL, {
-            params: {
-                page: this.state.page++,
-                size: 5
+        axios.get(this.state.next).then(response => {
+            let posts = response.data._embedded.posts;
+            let next = response.data._links.next.href;
+            let previous;
+            try {
+                previous = response.data._links.prev.href;
+            } catch (e){
+                previous = "";
+                console.log(e.message)
             }
-        }).then(response => {
-            const posts = response.data._embedded.posts;
-            if (posts === []){
-                this.state.page--
-            }
-            this.setState({posts});
+            this.setState({
+                posts,
+                next: next,
+                previous: previous
+            });
         })
     };
 
     previousPage = () => {
-        if(this.state.page > 0){
-            axios.get(API_URL, {
-                params: {
-                    page: this.state.page--,
-                    size: 5
-                }
-            }).then(response => {
-                const posts = response.data._embedded.posts;
-                this.setState({posts});
-            })
-        }
+        axios.get(this.state.previous).then(response => {
+            let posts = response.data._embedded.posts;
+            let next = response.data._links.next.href;
+            let previous;
+            try {
+                previous = response.data._links.prev.href;
+            } catch (e){
+                previous = "";
+                console.log(e.message)
+            }
+            this.setState({
+                posts,
+                next: next,
+                previous: previous
+            });
+        })
+
     };
 
     render = () => {

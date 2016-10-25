@@ -1,11 +1,14 @@
+/*
 package com.ludwigsw.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ludwigsw.comment.Comment;
 import com.ludwigsw.core.BaseEntity;
 import com.ludwigsw.post.Post;
+*/
 /*import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;*/
+import org.springframework.security.crypto.password.PasswordEncoder;*//*
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -13,9 +16,11 @@ import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
+*/
 /**
  * Created by Ludwig on 10/14/2016.
- */
+ *//*
+
 @Entity
 public class User extends BaseEntity {
 //    public static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
@@ -41,9 +46,11 @@ public class User extends BaseEntity {
         this.roles = roles;
     }
 
+*/
 /*    public void setPassword(String password) {
         this.password = PASSWORD_ENCODER.encode(password);
-    }*/
+    }*//*
+
 
     public String getPassword() {
         return password;
@@ -81,3 +88,4 @@ public class User extends BaseEntity {
         this.roles = roles;
     }
 }
+*/
