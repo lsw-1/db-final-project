@@ -53,10 +53,7 @@ export default class Main extends Component {
 
     render = () => {
 
-        return <div>
-            <div>
-                <button className="btn-lg btn-danger" onClick={() => this.deletePost()}>Delete</button>
-            </div>
+        return <div className="col-md-8 offset-lg-2">
             {/**************PAGED POSTS******************/}
             <div>
                 <Posts posts={this.state.posts}/>
