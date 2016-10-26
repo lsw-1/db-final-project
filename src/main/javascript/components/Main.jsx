@@ -39,10 +39,16 @@ export default class Main extends Component {
     render = () => {
 
         return <div className="col-md-8 offset-lg-2">
+
+            <div className="input-group m-b-2">
+                <input  id="search" type="text" className="form-control" placeholder="Search for..."/><span className="input-group-btn">
+                <button className="btn btn-secondary" type="button" onClick={() => this.searchTitle()}>Search</button></span>
+            </div>
+{/*
             <div>
                 <input id="search" type="text"/>
-                <button onClick={() => this.searchTitle()}>search</button>
-            </div>
+                <button onClick={}>search</button>
+            </div>*/}
             {/**************POSTS******************/}
             <div>
                 <Posts posts={this.state.posts}/>

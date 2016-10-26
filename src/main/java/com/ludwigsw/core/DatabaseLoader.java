@@ -1,3 +1,4 @@
+/*
 package com.ludwigsw.core;
 
 import com.ludwigsw.comment.Comment;
@@ -44,6 +45,7 @@ public class DatabaseLoader implements ApplicationRunner {
                 "hörru"
         };
 
+*/
 /*
        List<User> students = Arrays.asList(
                 new User("jacobproffer", "Jacob", "Proffer", "password", new String[]{"ROLE_USER"}),
@@ -62,7 +64,8 @@ public class DatabaseLoader implements ApplicationRunner {
         users.save(students);
         users.save(new User("luda", "Wiren", "Ludwig", "13245", new String[]{"ROLE_USER", "ROLE_ADMIN"}));
 
-*/
+*//*
+
 
 
         List<Post> mockPosts = new ArrayList<>();
@@ -84,3 +87,4 @@ public class DatabaseLoader implements ApplicationRunner {
         posts.save(mockPosts);
     }
 }
+*/

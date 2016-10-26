@@ -7,14 +7,14 @@ export default class Header extends Component {
         return (
             <div>
                 {/***************HEADER*********************/}
-                <div className="jumbotron bg-success">
-                    <h1 className="display-1">La petite Luda blog</h1>
-                    <p>Final project of DB course</p>
+                <div className="jumbotron bg-inverse m-b-0">
+                    <h1 className="display-1">Le Blögg</h1>
+                    <p className="display-4">Final project of Java DB course</p>
                 </div>
 
                 {/***************NAVBAR*********************/}
-                <nav className="navbar navbar-light bg-faded">
-                    <ul className="nav navbar-nav">
+                <nav className="navbar navbar-light bg-faded ">
+                    <ul className="nav navbar-nav offset-md-2">
                         <li className="nav-item active">
                             <Link className="nav-link"to="/">Home</Link>
                         </li>

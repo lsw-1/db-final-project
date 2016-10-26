@@ -19,7 +19,7 @@ public class Post extends BaseEntity {
     @Size(min = 2, max = 30)
     private String title;
     @NotNull
-    @Size(min = 2, max = 500)
+    @Size(min = 2, max = 1000)
     private String content;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)

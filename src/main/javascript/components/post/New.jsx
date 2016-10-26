@@ -4,9 +4,6 @@ import {Link} from 'react-router';
 
 export default class New extends Component {
 
-    constructor = () => {
-    };
-
     addPost = () => {
         const title = document.getElementById("title-input").value;
         const content = document.getElementById("content-input").value;
@@ -15,8 +12,6 @@ export default class New extends Component {
             title: title,
             content: content
         };
-
-        console.log(createdPost);
 
         axios.post('/api/v1/posts/', createdPost)
             .then(response => {
@@ -45,7 +40,7 @@ export default class New extends Component {
 
                 <div className="form-group row">
                     <div className="offset-sm-2 col-sm-10">
-                        <button type="submit" className="btn btn-warning" onClick={() => this.addPost()}><Link to="action/post/created">Submit</Link>
+                        <button type="submit" className="btn btn-warning" onClick={() => this.addPost()}><Link to="action/Post/created">Submit</Link>
                         </button>
                     </div>
                 </div>

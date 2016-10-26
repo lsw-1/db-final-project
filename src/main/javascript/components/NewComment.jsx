@@ -26,14 +26,11 @@ export default class NewComment extends Component {
         return (
             <div>
                 <div className="form-group row">
-                    <label className="col-xs-2 col-form-label">Content</label>
-                    <div className="col-xs-10">
                         <textarea className="form-control" type="text" id="content-input"/>
-                    </div>
                 </div>
 
                 <div className="form-group row">
-                    <div className="offset-sm-2 col-sm-10">
+                    <div className="col-sm-10">
                         <button type="submit" className="btn btn-warning"
                                 onClick={() => this.addComment()}>Submit
                         </button>

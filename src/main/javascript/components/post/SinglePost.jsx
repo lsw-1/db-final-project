@@ -12,15 +12,25 @@ export default class SinglePost extends Component {
             title: "...loading",
             content: "...loading",
             comments: [],
-            api_url: "/api/v1/posts/" + id,
+            apiUrl: "/api/v1/posts/" + id,
             commentUrl: "/api/v1/posts/" + id + "/comments",
-            editing: false
+            editing: false,
+            commentEdit: false
         }
     };
 
     componentDidMount = () => {
+        this.interval = setInterval(
+            () =>
+                axios.get(this.state.commentUrl).then(response => {
+                    this.setState({
+                        comments: response.data._embedded.comments,
+                    });
+                }),
+            3000
+        );
 
-        axios.get(this.state.api_url).then(response => {
+        axios.get(this.state.apiUrl).then(response => {
             this.setState({
                 title: response.data.title,
                 content: response.data.content
@@ -35,8 +45,12 @@ export default class SinglePost extends Component {
 
     };
 
+    componentWillUnmount = () => {
+        clearInterval(this.interval)
+    };
+
     onDelete = () => {
-        axios.delete(this.state.api_url).then(response =>
+        axios.delete(this.state.apiUrl).then(response =>
             console.log(response.status))
     };
 
@@ -46,7 +60,7 @@ export default class SinglePost extends Component {
             content: this.state.content
         };
 
-        axios.put(this.state.api_url, editedPost).then(response =>
+        axios.put(this.state.apiUrl, editedPost).then(response =>
             console.log(response.statusText)
         )
     };
@@ -60,15 +74,18 @@ export default class SinglePost extends Component {
 
     };
 
-    onChange = () => {
+    onChangePost = () => {
         let edit = !this.state.editing;
         this.setState({
             editing: edit
         })
     };
 
-    addComment = () => {
-
+    onChangeComment = () => {
+        let edit = !this.state.commentEdit;
+        this.setState({
+            commentEdit: edit
+        })
     };
 
 
@@ -79,36 +96,60 @@ export default class SinglePost extends Component {
                 <p>{comment.content}</p>
             </div>
         );
+
+        let editingComment = this.state.commentEdit === false ?
+            <button className="btn" onClick={() => this.onChangeComment()}> Write Comment</button>
+            : <NewComment postUrl={this.state.apiUrl}/>;
+
+
         /*Checks if state-editing is true and adapts the view accordingly*/
         let postArea = (this.state.editing === true) ?
             <div className="row">
-                <input className="col-md-8" id="title"/>
-                <textarea className="col-md-8" id="content" />
-                <div className="btn-group col-md-6">
-                    <button className="btn" onClick={() => this.onChange()}>Cancel</button>
-                    <button className="btn" onClick={() => this.onSave()}>Save</button>
+                <div className="form-group row">
+                    <label className="col-xs-2 col-form-label">Title</label>
+                    <div className="col-xs-10">
+                        <input className="form-control" type="text" id="title"/>
+                    </div>
                 </div>
-            </div> :
+
+                <div className="form-group row">
+                    <label className="col-xs-2 col-form-label">Content</label>
+                    <div className="col-xs-10">
+                        <textarea className="form-control" type="text" id="content"/>
+                    </div>
+                </div>
+                <button className="btn" onClick={() => this.onChangePost()}>Cancel</button>
+                <button className="btn" onClick={() => this.onSave()}>Save</button>
+            </div>
+            /* OR ELSE */
+            :
             <div>
-                <h4 className="display-4">{this.state.title}</h4>
-                <p>{this.state.content}</p>
-                <div className="btn-group">
-                    <button className="btn" onClick={() => this.onDelete()}><Link to="action/post/deleted">Delete</Link></button>
-                    <button className="btn" onClick={() => this.onChange()}>Edit</button>
-                    <button className="btn" onClick={() => this.onComplete()}> <Link to="action/post/edited"> Completed</Link></button>
+                <div className="card card-block">
+                    <h4 className="card-title">{this.state.title}</h4>
+                    <p className="card-text">{this.state.content}</p>
                 </div>
+                <div className="btn-group">
+                    <button className="btn" onClick={() => this.onChangePost()}>Edit</button>
+                    <button className="btn btn-danger" onClick={() => this.onDelete()}><Link
+                        to="action/Post/deleted">Delete</Link>
+                    </button>
+                    <button className="btn btn-success" onClick={() => this.onComplete()}><Link
+                        to="action/Post/edited">
+                        Completed</Link></button>
+                </div>
+
             </div>;
 
-        return <div>
+        return <div className="offset-lg-2 col-md-8 ">
             {postArea}
 
             <div className="m-t-2">
-                <h4 className="display-4 m-b-2">Comments</h4>
+                <h4 className="m-b-2">Comments</h4>
 
                 {comments}
 
-                <button className="btn"> Write Comment</button>
-                <NewComment postUrl={this.state.api_url}/>
+                {editingComment}
+
             </div>
         </div>
 
