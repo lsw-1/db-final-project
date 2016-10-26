@@ -1,5 +1,10 @@
 # Le Blog
 
+--För att få det att fungera 
+- installera Nodejs
+- ta bort node_modules och kör: npm install i terminalen 
+- installera h2 och ändra i application.properties datasource så den matachar
+
 Denna app är till för slutprojekt i Java och databaser. Appen är en blogg byggd som en REST i backend
 via Java-ramverket Spring Boot sedan en SPA(Single Page App) med React som frontend samt kopplad till H2 SQL-databas.
 
