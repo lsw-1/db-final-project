@@ -1,4 +1,3 @@
-/*
 package com.ludwigsw.core;
 
 import com.ludwigsw.comment.Comment;
@@ -45,8 +44,8 @@ public class DatabaseLoader implements ApplicationRunner {
                 "hörru"
         };
 
-*/
-/*       List<User> students = Arrays.asList(
+/*
+       List<User> students = Arrays.asList(
                 new User("jacobproffer", "Jacob", "Proffer", "password", new String[]{"ROLE_USER"}),
                 new User("mlnorman", "Mike", "Norman", "password", new String[]{"ROLE_USER"}),
                 new User("k_freemansmith", "Karen", "Freeman-Smith", "password", new String[]{"ROLE_USER"}),
@@ -61,8 +60,9 @@ public class DatabaseLoader implements ApplicationRunner {
                 new User("albertqerimi", "Albert", "Qerimi", "password", new String[]{"ROLE_USER"})
         );
         users.save(students);
-        users.save(new User("luda", "Wiren", "Ludwig", "13245", new String[]{"ROLE_USER", "ROLE_ADMIN"}));*//*
+        users.save(new User("luda", "Wiren", "Ludwig", "13245", new String[]{"ROLE_USER", "ROLE_ADMIN"}));
 
+*/
 
 
         List<Post> mockPosts = new ArrayList<>();
@@ -75,11 +75,12 @@ public class DatabaseLoader implements ApplicationRunner {
                     Post p = new Post(title, title);
 //                    p.setUser(students.get(i % students.size()));
                     Comment comment = new Comment(String.format("what is this %s", insert));
+                    Comment comment2 = new Comment(String.format("what is this %s", insert));
 //                    comment.setUser(students.get((i % students.size())));
                     p.addComment(comment);
+                    p.addComment(comment2);
                     mockPosts.add(p);
                 });
         posts.save(mockPosts);
     }
 }
-*/

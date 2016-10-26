@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router';
+import NewComment from '../NewComment.jsx'
 
 export default class SinglePost extends Component {
 
@@ -50,8 +51,6 @@ export default class SinglePost extends Component {
         )
     };
 
-
-
     onSave = () => {
         this.setState({
             title: document.getElementById('title').value,
@@ -68,6 +67,10 @@ export default class SinglePost extends Component {
         })
     };
 
+    addComment = () => {
+
+    };
+
 
     render = () => {
         /*Render the comments*/
@@ -76,7 +79,7 @@ export default class SinglePost extends Component {
                 <p>{comment.content}</p>
             </div>
         );
-        /*Checks if editing is true and adapts the view accordingly*/
+        /*Checks if state-editing is true and adapts the view accordingly*/
         let postArea = (this.state.editing === true) ?
             <div className="row">
                 <input className="col-md-8" id="title"/>
@@ -87,21 +90,25 @@ export default class SinglePost extends Component {
                 </div>
             </div> :
             <div>
-                <h4>{this.state.title}</h4>
+                <h4 className="display-4">{this.state.title}</h4>
                 <p>{this.state.content}</p>
                 <div className="btn-group">
-                    <button className="btn" onClick={() => this.onDelete()}><Link to="deleted">Delete</Link></button>
+                    <button className="btn" onClick={() => this.onDelete()}><Link to="action/post/deleted">Delete</Link></button>
                     <button className="btn" onClick={() => this.onChange()}>Edit</button>
-                    <button className="btn" onClick={() => this.onComplete()}> <Link to="created"> Completed</Link></button>
+                    <button className="btn" onClick={() => this.onComplete()}> <Link to="action/post/edited"> Completed</Link></button>
                 </div>
             </div>;
 
         return <div>
             {postArea}
+
             <div className="m-t-2">
                 <h4 className="display-4 m-b-2">Comments</h4>
+
                 {comments}
+
                 <button className="btn"> Write Comment</button>
+                <NewComment postUrl={this.state.api_url}/>
             </div>
         </div>
 

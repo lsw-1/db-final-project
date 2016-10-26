@@ -16,10 +16,10 @@ import java.util.List;
 @Entity
 public class Post extends BaseEntity {
     @NotNull
-//    @Size(min = 2, max = 30)
+    @Size(min = 2, max = 30)
     private String title;
     @NotNull
-//    @Size(min = 5, max = 500)
+    @Size(min = 2, max = 500)
     private String content;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
