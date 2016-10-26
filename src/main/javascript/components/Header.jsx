@@ -8,7 +8,7 @@ export default class Header extends Component {
             <div>
                 {/***************HEADER*********************/}
                 <div className="jumbotron bg-inverse m-b-0">
-                    <h1 className="display-1">Le Blögg</h1>
+                    <h1 className="display-1">Le Blog</h1>
                     <p className="display-4">Final project of Java DB course</p>
                 </div>
 
