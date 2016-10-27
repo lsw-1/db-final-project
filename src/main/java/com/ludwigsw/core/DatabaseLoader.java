@@ -1,4 +1,6 @@
 /*
+
+// Just for populating the database without sql
 package com.ludwigsw.core;
 
 import com.ludwigsw.comment.Comment;

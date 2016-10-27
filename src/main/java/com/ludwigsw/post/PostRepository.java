@@ -15,8 +15,10 @@ import java.util.List;
 /**
  * Created by Ludwig on 10/13/2016.
  */
+//CrudRepo that set up working CRUD operations for Comment model
 public interface PostRepository extends CrudRepository<Post, Long> {
 
+//    Method to be able to search by title, It works because of the naming convention and the params
     List<Post> findByTitleContaining(@Param("title") String title);
 
 }

@@ -10,6 +10,7 @@ import org.springframework.validation.Validator;
 /**
  * Created by Ludwig on 10/14/2016.
  */
+// Configure jpa annoted validtion before creation and save of models
 @Configuration
 public class RestConfig extends RepositoryRestConfigurerAdapter {
 

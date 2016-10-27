@@ -6,6 +6,8 @@ import New from './components/post/New.jsx';
 import Header from './components/Header.jsx';
 import SinglePost from './components/post/SinglePost.jsx';
 import Created from './components/Created.jsx';
+
+//Routes of the app
 const routes = (
     <Router history={browserHistory}>
         <Route component={Header}>
