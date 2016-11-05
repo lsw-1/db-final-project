@@ -1,7 +1,7 @@
 .gradle
 /build/
 !gradle/wrapper/gradle-wrapper.jar
-node_modules
+node_modules/
 
 ### STS ###
 .classpath
@@ -23,3 +23,4 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+/node_modules/
