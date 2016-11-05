@@ -12,9 +12,6 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import javax.annotation.security.PermitAll;
 import java.util.List;
 
-/**
- * Created by Ludwig on 10/13/2016.
- */
 //CrudRepo that set up working CRUD operations for Comment model
 public interface PostRepository extends CrudRepository<Post, Long> {
 
