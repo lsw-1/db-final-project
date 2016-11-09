@@ -12,9 +12,6 @@ export default class Created extends React.Component {
         return <div className="offset-lg-3 m-t-2">
             <h1 className="display-4"> {entity} was probably {action}</h1>
             <div className="offset-lg-2 m-t-2">
-                <svg>
-
-                </svg>
             <button className="btn">
                 <Link to="/">Back to Home</Link>
             </button>
