@@ -29196,7 +29196,7 @@
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'offset-lg-2 m-t-2' },
-	                    _react2.default.createElement('img', { href: 'static/img/success.svg' }),
+	                    _react2.default.createElement('svg', null),
 	                    _react2.default.createElement(
 	                        'button',
 	                        { className: 'btn' },

@@ -14,9 +14,14 @@ import org.springframework.validation.Validator;
 @Configuration
 public class RestConfig extends RepositoryRestConfigurerAdapter {
 
+
+    private final Validator validator;
+
     @Autowired
     @Lazy
-    private Validator validator;
+    public RestConfig(Validator validator) {
+        this.validator = validator;
+    }
 
     @Override
     public void configureValidatingRepositoryEventListener(ValidatingRepositoryEventListener validatingListener) {
